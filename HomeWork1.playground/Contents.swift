@@ -157,6 +157,11 @@ func makeRace<T>(_ auto1: T, _ auto2: T) -> T where T : Car {
     var auto1val = auto1.horsePower * auto1.driver.rating
     var auto2val = auto2.horsePower * auto2.driver.rating
     if auto1val == auto2val {
+        var randonNum = Int.random(in: 0...1)
+        switch randonNum {
+        case 0: auto1.driver.increaceRating(1)
+        default: auto2.driver.increaceRating(1)
+        }
         return makeRace(auto1, auto2)
     }
     let auto1FullName = "\(auto1.brand)\(auto1.model)"
